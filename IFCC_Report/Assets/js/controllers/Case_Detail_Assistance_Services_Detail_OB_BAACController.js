@@ -292,7 +292,7 @@
                 dataFilter: $scope.dataFilter
             };
             $rootScope.showModalProcessing(true);
-            BaseService.post($scope.uriController, 'Export', data).then(
+            BaseService.post($scope.uriController, 'Export/b1', data).then(
                 function (response) {
 
                     if (response.data.result !== 'No Data.') {
