@@ -1,0 +1,523 @@
+﻿@using System.Data;
+@using Newtonsoft.Json;
+@if (Session["user"] == null)
+{
+    <text>
+
+    </text>
+    if (!string.IsNullOrEmpty(Request.Url.AbsoluteUri))
+    {
+        Response.Redirect("~/login?returnUrl=" + Server.UrlEncode(@Request.Url.AbsoluteUri));
+    }
+    else
+    {
+        Session.Abandon();
+        Response.Redirect("~/login");
+
+    }
+ 
+    return;
+}
+
+@*@if(Session["user"] != null)
+{
+    Response.Redirect("~/login");
+}*@
+@{
+
+    string READ = "0";
+
+    string url = "";
+    if (Request.Url.Segments.Any())
+    {
+        url = "~/" + (Request.Url.Segments.Last().ToLower() == "" || Request.Url.Segments.Last().ToLower() == "addedit" || Request.Url.Segments.Last().ToLower() == "views" ? Request.Url.Segments[Request.Url.Segments.Count() - 2].Replace("/", "") : Request.Url.Segments.Last());
+    }
+    ViewBag.Version = @System.Configuration.ConfigurationManager.AppSettings["sourceVersion"];
+    string username = string.Empty;
+    //string USER_TYPE = string.Empty;
+    //string FIRSTNAME = string.Empty;
+    //string LASTNAME = string.Empty;
+    //string EMAIL = string.Empty;
+    //string COMPANY_ID = string.Empty;
+    //string VENDOR_ID = string.Empty;
+    //string USERNAME = string.Empty;
+    //string USER_GROUP_ID = string.Empty;
+    //string ISAPPROVE = string.Empty;
+    //string DISPLAYNAME = string.Empty;
+    //string COMPANY_TYPE_ID = string.Empty;
+    //string COMPANY_NAME = string.Empty;
+    //string COMPANY_NUMBER = string.Empty;
+    //string USER_GROUP_NAME = string.Empty;
+
+
+    DataTable dtuser = (DataTable)Session["user"];
+    DataRow dr = dtuser.Rows[0];
+    username = dr["username"] + string.Empty;
+    //USER_TYPE = dr["USER_TYPE"] + string.Empty;
+    //FIRSTNAME = dr["FIRSTNAME"] + string.Empty;
+    //LASTNAME = dr["LASTNAME"] + string.Empty;
+    //EMAIL = dr["EMAIL"] + string.Empty;
+
+}
+<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-controller="AppController">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="lng">
+    <meta name="keyword" content="lng, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/bootstrap.css?v=" + @ViewBag.Version)" />
+    <!--external css-->
+    <link rel="stylesheet" href="@Url.Content("~/Assets/font-awesome/css/font-awesome.css?v=" + @ViewBag.Version)" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/zabuto_calendar.css?v=" + @ViewBag.Version)" />
+    @*<link rel="stylesheet" href="@Url.Content("~/Assets/js/gritter/css/jquery.gritter.css?v=" + @ViewBag.Version)" />*@
+    <link rel="stylesheet" href="@Url.Content("~/Assets/lineicons/style.css?v=" + @ViewBag.Version)" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" />
+    <link rel="stylesheet" href="https://code.jquery.com/jquery-3.5.1.js" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css" />
+
+
+
+    @*<link rel="stylesheet" href="@Url.Content("~/Assets/css.css?v=" + @ViewBag.Version)" />*@
+
+    <link rel="stylesheet" href="@Url.Content("~/Assets/plugins/select2/css/select2.css?v=" + ViewBag.Version)" />
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/style.css?v=" + @ViewBag.Version)" />
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/style-responsive.css?v=" + @ViewBag.Version)" />
+    <link rel="stylesheet" href="@Url.Content("~/Assets/plugins/sweetalert2/sweetalert2.css?v=" + @ViewBag.Version)" />
+    <link rel="stylesheet" href="@Url.Content("~/Assets/plugins/bootstrap-datepicker/css/datepicker3.css?v=" + @ViewBag.Version)" />
+    <link rel="stylesheet" href="@Url.Content("~/Assets/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css?v=" + @ViewBag.Version)" />
+    <link rel="stylesheet" href="@Url.Content("~/Assets/plugins/bootstrap-daterangepicker/daterangepicker.min.css?v=" + @ViewBag.Version)" />
+    <link rel="stylesheet" href="@Url.Content("~/Assets/plugins/clockpicker-gh-pages/dist/bootstrap-clockpicker.css?v=" + @ViewBag.Version)" />
+    @*<link rel="stylesheet" href="@Url.Content("~/Assets/plugins/datatables/css/jquery.dataTables.min.css?v=" + @ViewBag.Version)" />
+        <link rel="stylesheet" href="@Url.Content("~/Assets/plugins/datatables/css/extension/fixedColumns.dataTables.min.css?v=" + @ViewBag.Version)" />
+        <link rel="stylesheet" href="@Url.Content("~/Assets/plugins/datatables/css/extension/select.dataTables.min.css?v=" + @ViewBag.Version)" />
+        <link rel="stylesheet" href="@Url.Content("~/Assets/plugins/datatables/css/extension/keyTable.dataTables.min.css?v=" + @ViewBag.Version)" />*@
+    <link rel="stylesheet" href="@Url.Content("~/Assets/plugins/rowReorder.dataTables.min.css?v=" + @ViewBag.Version)" />
+    <link rel="stylesheet" href="@Url.Content("~/Assets/plugins/responsive.dataTables.min.css?v=" + @ViewBag.Version)" />
+    <link rel="stylesheet" href="@Url.Content("~/Assets/plugins/summernote/summernote.css?v=" + @ViewBag.Version)" />
+    <link href='https://css.gg/arrow-bottom-right-r.css' rel='stylesheet'>
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <!--link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"-->
+    <!-- Material Design Bootstrap -->
+    <!--link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet"-->
+
+
+    @if (Request.Browser.Browser != "IE")
+    {
+        <link rel="stylesheet" href="@Url.Content("~/Assets/css/extraLibs.css?v=" + @ViewBag.Version)" />
+    }
+    else
+    {
+        if (Request.Browser.MajorVersion > 8)
+        {
+            <link rel="stylesheet" href="@Url.Content("~/Assets/css/extraLibs.css?v=" + @ViewBag.Version)" />
+        }
+        else
+        {
+            <link rel="stylesheet" href="@Url.Content("~/Assets/css/ie8.css?v=" + @ViewBag.Version)" />
+        }
+    }
+
+    <script src="@Url.Content("~/Assets/plugins/jquery/jquery.min.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/angularjs/angularjs-1.2-29/angular.min.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/js/chart-master/Chart.js?v=" + @ViewBag.Version)"></script>
+
+</head>
+
+<body>
+    <div ng-controller="@ViewBag.Controller">
+        <section id="container">
+            @*@Html.AntiForgeryToken()*@
+            <!-- **********************************************************************************************************************************************************
+            TOP BAR CONTENT & NOTIFICATIONS
+            *********************************************************************************************************************************************************** -->
+            <!--header start-->
+            <header class="header black-bg">
+                <div class="sidebar-toggle-box">
+                    <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+                </div>
+                <!--logo start-->
+                <div>
+                    <a href="index.html" class="logo"><img src="~/assets/img/contactfcc.png?v=@ViewBag.Version" alt="FCC Report Management" width="55" /></a>
+                </div>
+                <!--logo end-->
+                <div class="top-menu">
+                    <ul class="nav pull-right top-menu">
+
+                        @*<li><a class="logout" href="javascript:void(0);" ng-click="signOut()">Logout</a></li>*@
+                    </ul>
+                </div>
+            </header>
+            <!--header end-->
+            <!-- **********************************************************************************************************************************************************
+            MAIN SIDEBAR MENU
+            *********************************************************************************************************************************************************** -->
+            <!--sidebar start-->
+            <aside>
+                <div id="sidebar" class="nav-collapse ">
+                    <!-- sidebar menu start-->
+                    <ul class="sidebar-menu" id="nav-accordion">
+
+                        <p class="centered"><img src="@Url.Content("~/Assets/img/user.png?v=" + @ViewBag.version)" class="img-circle" width="70"></p>
+                        <h5 class="centered">Admin</h5>
+
+                        <li class="sub-menu">
+                            <a target="_self" href="~/Home/">
+                                <span>Home</span>
+                            </a>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a target="_self" href="~/Student/">
+                                <span>CallBack Report</span>
+                            </a>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a>
+                                <i class="fas fa-plus-circle"></i>  <span> BAAC </span>
+                            </a>
+
+                            <ul class="sub-menu">
+                                <li>
+                                    <a target="_self" href="~/basket/">
+                                        <i class="fas fa-shopping-basket"></i> Basket
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_self" href="~/Hotel/">
+                                        <i class="fas fa-hotel"></i>   Hotels and accommodations
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_self" href="~/Health/">
+                                        <i class="fas fa-briefcase-medical"></i> Package Health Report
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_self" href="~/Food/">
+                                        <i class="fas fa-utensils"></i>  Food and drink
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_self" href="~/Travel/">
+                                        <i class="fas fa-plane-departure"></i>   Flight and Travel
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_self" href="~/SpecialEx/">
+                                        <i class="fas fa-user-graduate"></i>  Special Experience
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_self" href="~/Donation/">
+                                        <i class="fas fa-hand-holding-usd"></i> Donation
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_self" href="~/HousingService/">
+                                        <i class="fas fa-home"></i>  Housing Services
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_self" href="~/CarService/">
+                                        <i class="fas fa-car"></i>Car Service
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_self" href="~/SportService/">
+                                        <i class="fas fa-futbol"></i> Sport Service
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_self" href="~/SkillCourse/">
+                                        <i class="fas fa-user-graduate"></i>  Skill Enhancement Course
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a target="_self" href="~/Pet/">
+                                        <i class="fas fa-cat"></i> Pet Services
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a target="_self" href="">
+                                <i class="fas fa-plus-circle"></i> <span>CCA</span>
+                            </a>
+
+                            <ul class="sub-menu">
+                                <li>
+                                    <a target="_self" href="~/CCAPerforamcePT/">
+                                        <i class="fas fa-file-alt"></i> Performance CCA
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a target="_self" href="">
+                                <i class="fas fa-plus-circle"></i>  <span>K Motor</span>
+                            </a>
+
+                            <ul class="sub-menu">
+                                <li>
+                                    <a target="_self" href="~/KmotorReport/">
+                                        <i class="fas fa-file-alt"></i> K Motor
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a target="_self" href="">
+                                <i class="fas fa-plus-circle"></i>    <span>Blacktie</span>
+                            </a>
+
+                            <ul class="sub-menu">
+                                <li>
+                                    <a target="_self" href="~/Covid_19_Report/">
+                                        <i class="fas fa-file-alt"></i> Blacktie
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a target="_self" href="">
+                                <i class="fas fa-plus-circle"></i> <span>OB BAAC</span>
+                            </a>
+
+                            <ul class="sub-menu">
+                                <li>
+                                    <a target="_self" href="~/Case_Detail_Assistance_Services_Detail_OB_BAAC/">
+                                        <i class="fas fa-file-alt"></i> Assistance Services & Detail
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!--  Roadside   -->
+                        <li class="sub-menu">
+                            <a target="_self" href="">
+                                <i class="fas fa-plus-circle"></i> <span>Roadside</span>
+                            </a>
+
+                            <ul class="sub-menu">
+                                <li>
+                                    <a target="_self" href="@Url.Action("BAAC", "Roadside")">
+                                        <i class="fas fa-file-alt"></i> BACC Report
+                                    </a>
+                                </li>
+                            </ul>
+
+
+                            <ul class="sub-menu">
+                                <li>
+                                    <a target="_self" href="@Url.Action("Cigna" , "Roadside")">
+                                        <i class="fas fa-file-alt"></i> Cigna Report
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <ul class="sub-menu">
+                                <li>
+                                    <a target="_self" href="@Url.Action("KMT" , "Roadside")">
+                                        <i class="fas fa-file-alt"></i> KMT Report
+                                    </a>
+                                </li>
+                            </ul>
+
+
+                            <ul class="sub-menu">
+                                <li>
+                                    <a target="_self" href="@Url.Action("MTL" , "Roadside")">
+                                        <i class="fas fa-file-alt"></i> MTL Report
+                                    </a>
+                                </li>
+                            </ul>
+
+
+                            <ul class="sub-menu">
+                                <li>
+                                    <a target="_self" href="@Url.Action("Tbank","Roadside")">
+                                        <i class="fas fa-file-alt"></i> Tbank
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </li>
+
+                        <li class="sub-menu">
+
+                            @using (Html.BeginForm("Logout", "Login", FormMethod.Post))
+                            {
+                                <a href="javascript:;" onclick="document.forms[0].submit();">
+
+                                    <i class="gg-arrow-bottom-right-r">
+                                        <i style=" margin-left: 40px">Logout</i>
+                                    </i>
+                                </a>
+                            }
+                        </li>
+
+                    </ul>
+
+
+                    <!-- sidebar menu end-->
+                </div>
+            </aside>
+            <!--sidebar end-->
+            <!-- **********************************************************************************************************************************************************
+            MAIN CONTENT
+            *********************************************************************************************************************************************************** -->
+            <!--main content start-->
+            <div class="page-inner">
+                @RenderBody()
+                <br />
+                <br />
+                <!--main content end-->
+                <!--footer start-->
+                <footer class="site-footer ">
+
+
+                    <div class="col-xs-12 text-right">
+                        <p>IFCC Report Management</p>
+                        <p><B> [ Version 1.0.0 ]</B>  @("@") Copyright 2020 By IT Offcer FCC.Co.,Ltd   </p>
+                    </div>
+
+                </footer>
+            </div>
+
+            <!--footer end-->
+        </section>
+    </div>
+    <div class="modal fade slide-up center-screen disable-scroll" id="modalProcessing" tabindex="-1" role="dialog" aria-hidden="false" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content-wrapper">
+                <div class="modal-content">
+                    <div class="modal-body text-center m-t-20">
+
+                        @if ((Request.Browser.Browser == "IE") && (Request.Browser.MajorVersion < 10))
+                        {
+                            <img src="@Url.Content("~/Assets/img/loading.gif")" alt="">
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("~/Assets/img/progress/progress-circle-warning.svg")" alt="">
+                        }
+                        <h4 class="no-margin">PROCESSING</h4>
+                        <h6 class="no-margin f-s-14">Please wait</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    @*<script src="@Url.Content("~/Assets/js/jquery-1.8.3.min.js?v=" + @ViewBag.Version)"></script>*@
+    <script src="@Url.Content("~/Assets/plugins/bootstrap.min.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/jquery.dcjqaccordion.2.7.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/jquery.scrollTo.min.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/jquery.nicescroll.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/jquery.sparkline.js?v=" + @ViewBag.Version)"></script>
+
+    <!--common script for all pages-->
+    <script src="@Url.Content("~/Assets/plugins/common-scripts.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/sparkline-chart.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/zabuto_calendar.js?v=" + @ViewBag.Version)"></script>
+
+    <!--custom switch-->
+    <script src="@Url.Content("~/Assets/plugins/bootstrap-switch.js?v=" + @ViewBag.Version)"></script>
+
+    <!--custom tagsinput-->
+    <script src="@Url.Content("~/Assets/plugins/jquery.tagsinput.js?v=" + @ViewBag.Version)"></script>
+
+    <!--custom checkbox & radio-->
+    @*<script src="@Url.Content("~/Assets/js/bootstrap-datepicker/js/bootstrap-datepicker.js?v=" + @ViewBag.Version)"></script>*@
+    @*<script src="@Url.Content("~/Assets/js/bootstrap-daterangepicker/date.js?v=" + @ViewBag.Version)"></script>*@
+    @*<script src="@Url.Content("~/Assets/js/bootstrap-daterangepicker/daterangepicker.js?v=" + @ViewBag.Version)"></script>*@
+
+    <script src="@Url.Content("~/Assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js?v=" + @ViewBag.Version)"></script>
+
+    <!-- Javascripts -->
+    <script src="@Url.Content("~/Assets/plugins/ie8-support/fixedIE8.js?v=" + @ViewBag.Version)"></script>
+    <script type="text/javascript" src="@Url.Content("~/Assets/plugins/ie8-support/excanvas.js?v=" + @ViewBag.Version)"></script>
+
+    <!--[if lte IE 8]>
+        <script type="text/javascript" src="@Url.Content("~/Assets/plugins/ie8-support/excanvas.js?v=" + @ViewBag.Version)"></script>
+    <![endif]-->
+
+    <script src="@Url.Content("~/Assets/plugins/bootstrap/dist/js/bootstrap.min.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/modal-fullscreen/modal-fullscreen.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/modal-fullscreen/modal-transparent.js?v=" + @ViewBag.version)"></script>
+
+    <script src="@Url.Content("~/Assets/plugins/moment/moment.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/datatables/js/jquery.dataTables.min.js?v=" + @ViewBag.version)"></script>
+    @*<script src="@Url.Content("~/Assets/plugins/datatables/js/dataTables.fixedHeader.min.js?v=" + @ViewBag.version)"></script>*@
+    <script src="@Url.Content("~/Assets/plugins/datatables/js/extension/dataTables.fixedColumns.min.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/datatables/js/extension/dataTables.select.min.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/datatables/js/extension/dataTables.keyTable.min.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/dataTables.responsive.min.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/dataTables.rowReorder.min.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/lodash/lodash.min.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/datejs/date.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/jquery-fullpage/jquery.fullpage.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/jquery-browser/jquery.browser.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/owl.carousel/owl.carousel.js?v=" + @ViewBag.version)"></script>
+
+    <script src="@Url.Content("~/Assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/jquery-numeric/jquery.numeric.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/jquery-inputmask/jquery.inputmask.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/bootstrap-material/material.min.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/select2/js/select2.min.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/sweetalert2/sweetalert2.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/morris/raphael.min.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/morris/morris.min.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/jquery-validation/jquery.validate.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/jquery-smoothscroll/jquery.smooth-scroll.js?v=" + @ViewBag.Version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/chancejs/chance.min.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/bootstrap-daterangepicker/daterangepicker.min.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.js?v=" + @ViewBag.version)"></script>
+
+    <!--[if !IE]><!-->
+    <script src="@Url.Content("~/Assets/plugins/jquery-swiper/swiper.jquery.min.js?v=" + @ViewBag.Version)"></script>
+    <!--<![endif]-->
+    <script src="@Url.Content("~/Assets/plugins/dataTables.rowsGroup.js?v=" + @ViewBag.version)"></script>
+    <script>window.FileAPI = { staticPath: '@Url.Content("~/Assets/plugins/file-api/")' };</script>
+    <script src="@Url.Content("~/Assets/plugins/file-api/FileAPI.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/Highcharts-6.1.1/code/highcharts.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/plugins/summernote/summernote.min.js?v=" + @ViewBag.version)"></script>
+    <!-- AngularJS-->
+    <script src="@Url.Content("~/Assets/js/main.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/js/app.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/js/service.js?v=" + @ViewBag.version)"></script>
+    <script src="@Url.Content("~/Assets/js/directive.js?v=" + @ViewBag.version)"></script>
+
+    <!--sweet alert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        @RenderSection("javascripts", required: false)
+</body>
+</html>

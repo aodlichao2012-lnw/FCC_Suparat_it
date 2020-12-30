@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Blacktie  Report";
+    ViewBag.Controller = "Covid_19_ReportController";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //ViewBag.activeMain = "Master";
+    //ViewBag.active = "Student";
+
+}
+@section javascripts{
+    <script src="@Url.Content("~/Assets/js/controllers/covid_19_ReportController.js?v=")"></script>
+
+}
+<section id="main-content" vertilize-container>
+    <section class="wrapper">
+        <h3><i class="fa fa-cogs"></i> Blacktie Report </h3>
+        <div class="row mt">
+            <div class="col-lg-12 no-padding no-margin">
+                <div class="form-panel no-margin-t">
+                    <form class="form-horizontal tasi-form">
+                        <div class="form-group no-margin">
+                            <div class="col-sm-6">
+                            </div>
+                            <div></div>
+
+                            <div class="col-xs-12">
+
+                                <div class="col-md-6">
+                                    <label class="col-sm-3 control-label required-label">Date Rage</label>
+                                    <div class="col-sm-9">
+                                        <div id="request_date_range" class="form-control">
+                                            <i class="fa fa-calendar"></i> &nbsp;
+                                            <span> </span>
+                                            <b class="fa fa-angle-down pull-right"></b>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <div class="col-xs-12">
+
+                                <div class="left  text-left">
+
+                                    <button type="button" class="btn btn-theme-blue btn-90 CheckDate" ng-click="ExportAllExcel()"><i class="fa fa-download"></i>&nbsp;&nbsp;Covid - 19</button>
+                                    &nbsp;
+                                    &nbsp;
+                                    <button type="button" class="btn btn-theme-blue btn-90 CheckDate" ng-click="ExportGrabFood()"><i class="fa fa-download"></i>&nbsp;&nbsp;Grab Food</button>
+                                    &nbsp;
+                                    &nbsp;
+                                    <button type="button" class="btn btn-theme-blue btn-90 CheckDate" ng-click="ExportHealthCarePlus()"><i class="fa fa-download"></i>&nbsp;&nbsp;Health Care Plus</button>
+                                    &nbsp;
+                                    &nbsp;
+                                    <button type="button" class="btn btn-theme-blue btn-90 CheckDate" ng-click="ExportHotel()"><i class="fa fa-download"></i>&nbsp;&nbsp;Hotel</button>
+                                    &nbsp;
+                                    &nbsp;
+                                    <button type="button" class="btn btn-theme-blue btn-90 CheckDate" ng-click="ExportRedCross()"><i class="fa fa-download"></i>&nbsp;&nbsp;Red Cross</button>
+                                    &nbsp;
+                                    &nbsp;
+                                    <button type="button" class="btn btn-theme-blue btn-90 CheckDate" ng-click="ExportS_and_P()"><i class="fa fa-download"></i>&nbsp;&nbsp; S &amp; P</button>
+                                    &nbsp;
+                                    &nbsp;
+                                    <button type="button" class="btn btn-theme-blue btn-90 CheckDate" ng-click="ExportVaccine()"><i class="fa fa-download"></i>&nbsp;&nbsp; Vaccine</button>
+                                    &nbsp;
+                                    &nbsp;
+                                    <button type="button" class="btn btn-theme-blue btn-90 CheckDate" ng-click="ExportWine()"><i class="fa fa-download"></i>&nbsp;&nbsp; Wine</button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+       
+
+        @*Log Create & Update*@
+       
+    </section>
+</section>
+

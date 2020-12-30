@@ -1,0 +1,1071 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="authenApplication">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="authenApplicationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="authenApplicationResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="prmType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="prmProvince" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="prmAmpher" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="prmTumbon" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAddressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAddressResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkLoginStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="hid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkLoginStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="checkLoginStatusResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendSMS_By_Service">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="service_type_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mobile" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendSMS_By_ServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sendSMS_By_ServiceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendMail_By_Service">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="service_type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="send_to" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="send_to_cc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="body" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendMail_By_ServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sendMail_By_ServiceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="service_type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="send_to" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="body" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sendMailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendLineNotify">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendLineNotifyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sendLineNotifyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAnnouncement">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="condition_type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="condition_value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAnnouncementResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAnnouncementResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFlightStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="flightid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFlightStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFlightStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFlightStatusOnDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Airline" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FligthNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFlightStatusOnDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFlightStatusOnDateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getURL">
+        <s:complexType />
+      </s:element>
+      <s:element name="getURLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getURLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkvalidURL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strHash" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkvalidURLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="checkvalidURLResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="DataTable" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="authenApplicationSoapIn">
+    <wsdl:part name="parameters" element="tns:authenApplication" />
+  </wsdl:message>
+  <wsdl:message name="authenApplicationSoapOut">
+    <wsdl:part name="parameters" element="tns:authenApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAddressSoapIn">
+    <wsdl:part name="parameters" element="tns:getAddress" />
+  </wsdl:message>
+  <wsdl:message name="getAddressSoapOut">
+    <wsdl:part name="parameters" element="tns:getAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkLoginStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:checkLoginStatus" />
+  </wsdl:message>
+  <wsdl:message name="checkLoginStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:checkLoginStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendSMS_By_ServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:sendSMS_By_Service" />
+  </wsdl:message>
+  <wsdl:message name="sendSMS_By_ServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:sendSMS_By_ServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendMail_By_ServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:sendMail_By_Service" />
+  </wsdl:message>
+  <wsdl:message name="sendMail_By_ServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:sendMail_By_ServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendMailSoapIn">
+    <wsdl:part name="parameters" element="tns:sendMail" />
+  </wsdl:message>
+  <wsdl:message name="sendMailSoapOut">
+    <wsdl:part name="parameters" element="tns:sendMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendLineNotifySoapIn">
+    <wsdl:part name="parameters" element="tns:sendLineNotify" />
+  </wsdl:message>
+  <wsdl:message name="sendLineNotifySoapOut">
+    <wsdl:part name="parameters" element="tns:sendLineNotifyResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAnnouncementSoapIn">
+    <wsdl:part name="parameters" element="tns:getAnnouncement" />
+  </wsdl:message>
+  <wsdl:message name="getAnnouncementSoapOut">
+    <wsdl:part name="parameters" element="tns:getAnnouncementResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFlightStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFlightStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightStatusOnDateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFlightStatusOnDate" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightStatusOnDateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFlightStatusOnDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="getURLSoapIn">
+    <wsdl:part name="parameters" element="tns:getURL" />
+  </wsdl:message>
+  <wsdl:message name="getURLSoapOut">
+    <wsdl:part name="parameters" element="tns:getURLResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkvalidURLSoapIn">
+    <wsdl:part name="parameters" element="tns:checkvalidURL" />
+  </wsdl:message>
+  <wsdl:message name="checkvalidURLSoapOut">
+    <wsdl:part name="parameters" element="tns:checkvalidURLResponse" />
+  </wsdl:message>
+  <wsdl:message name="authenApplicationHttpGetIn">
+    <wsdl:part name="projectID" type="s:string" />
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="authenApplicationHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getAddressHttpGetIn">
+    <wsdl:part name="prmType" type="s:string" />
+    <wsdl:part name="prmProvince" type="s:string" />
+    <wsdl:part name="prmAmpher" type="s:string" />
+    <wsdl:part name="prmTumbon" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAddressHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="checkLoginStatusHttpGetIn">
+    <wsdl:part name="hid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="checkLoginStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="sendSMS_By_ServiceHttpGetIn">
+    <wsdl:part name="project_id" type="s:string" />
+    <wsdl:part name="service_type_id" type="s:string" />
+    <wsdl:part name="mobile" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="sendSMS_By_ServiceHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="sendMail_By_ServiceHttpGetIn">
+    <wsdl:part name="project_id" type="s:string" />
+    <wsdl:part name="service_type" type="s:string" />
+    <wsdl:part name="send_to" type="s:string" />
+    <wsdl:part name="send_to_cc" type="s:string" />
+    <wsdl:part name="subject" type="s:string" />
+    <wsdl:part name="body" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="sendMail_By_ServiceHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="sendMailHttpGetIn">
+    <wsdl:part name="project_id" type="s:string" />
+    <wsdl:part name="service_type" type="s:string" />
+    <wsdl:part name="send_to" type="s:string" />
+    <wsdl:part name="subject" type="s:string" />
+    <wsdl:part name="body" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="sendMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="sendLineNotifyHttpGetIn">
+    <wsdl:part name="project_name" type="s:string" />
+    <wsdl:part name="message" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="sendLineNotifyHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAnnouncementHttpGetIn">
+    <wsdl:part name="project_id" type="s:string" />
+    <wsdl:part name="condition_type" type="s:string" />
+    <wsdl:part name="condition_value" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAnnouncementHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightStatusHttpGetIn">
+    <wsdl:part name="flightid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightStatusOnDateHttpGetIn">
+    <wsdl:part name="Airline" type="s:string" />
+    <wsdl:part name="FligthNumber" type="s:string" />
+    <wsdl:part name="Date" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightStatusOnDateHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getURLHttpGetIn" />
+  <wsdl:message name="getURLHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="checkvalidURLHttpGetIn">
+    <wsdl:part name="strHash" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="checkvalidURLHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="authenApplicationHttpPostIn">
+    <wsdl:part name="projectID" type="s:string" />
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="authenApplicationHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getAddressHttpPostIn">
+    <wsdl:part name="prmType" type="s:string" />
+    <wsdl:part name="prmProvince" type="s:string" />
+    <wsdl:part name="prmAmpher" type="s:string" />
+    <wsdl:part name="prmTumbon" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAddressHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="checkLoginStatusHttpPostIn">
+    <wsdl:part name="hid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="checkLoginStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="sendSMS_By_ServiceHttpPostIn">
+    <wsdl:part name="project_id" type="s:string" />
+    <wsdl:part name="service_type_id" type="s:string" />
+    <wsdl:part name="mobile" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="sendSMS_By_ServiceHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="sendMail_By_ServiceHttpPostIn">
+    <wsdl:part name="project_id" type="s:string" />
+    <wsdl:part name="service_type" type="s:string" />
+    <wsdl:part name="send_to" type="s:string" />
+    <wsdl:part name="send_to_cc" type="s:string" />
+    <wsdl:part name="subject" type="s:string" />
+    <wsdl:part name="body" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="sendMail_By_ServiceHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="sendMailHttpPostIn">
+    <wsdl:part name="project_id" type="s:string" />
+    <wsdl:part name="service_type" type="s:string" />
+    <wsdl:part name="send_to" type="s:string" />
+    <wsdl:part name="subject" type="s:string" />
+    <wsdl:part name="body" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="sendMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="sendLineNotifyHttpPostIn">
+    <wsdl:part name="project_name" type="s:string" />
+    <wsdl:part name="message" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="sendLineNotifyHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAnnouncementHttpPostIn">
+    <wsdl:part name="project_id" type="s:string" />
+    <wsdl:part name="condition_type" type="s:string" />
+    <wsdl:part name="condition_value" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAnnouncementHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightStatusHttpPostIn">
+    <wsdl:part name="flightid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightStatusOnDateHttpPostIn">
+    <wsdl:part name="Airline" type="s:string" />
+    <wsdl:part name="FligthNumber" type="s:string" />
+    <wsdl:part name="Date" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightStatusOnDateHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getURLHttpPostIn" />
+  <wsdl:message name="getURLHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="checkvalidURLHttpPostIn">
+    <wsdl:part name="strHash" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="checkvalidURLHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="iFCC_WSSoap">
+    <wsdl:operation name="authenApplication">
+      <wsdl:input message="tns:authenApplicationSoapIn" />
+      <wsdl:output message="tns:authenApplicationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAddress">
+      <wsdl:input message="tns:getAddressSoapIn" />
+      <wsdl:output message="tns:getAddressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkLoginStatus">
+      <wsdl:input message="tns:checkLoginStatusSoapIn" />
+      <wsdl:output message="tns:checkLoginStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendSMS_By_Service">
+      <wsdl:input message="tns:sendSMS_By_ServiceSoapIn" />
+      <wsdl:output message="tns:sendSMS_By_ServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendMail_By_Service">
+      <wsdl:input message="tns:sendMail_By_ServiceSoapIn" />
+      <wsdl:output message="tns:sendMail_By_ServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendMail">
+      <wsdl:input message="tns:sendMailSoapIn" />
+      <wsdl:output message="tns:sendMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendLineNotify">
+      <wsdl:input message="tns:sendLineNotifySoapIn" />
+      <wsdl:output message="tns:sendLineNotifySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAnnouncement">
+      <wsdl:input message="tns:getAnnouncementSoapIn" />
+      <wsdl:output message="tns:getAnnouncementSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightStatus">
+      <wsdl:input message="tns:GetFlightStatusSoapIn" />
+      <wsdl:output message="tns:GetFlightStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightStatusOnDate">
+      <wsdl:input message="tns:GetFlightStatusOnDateSoapIn" />
+      <wsdl:output message="tns:GetFlightStatusOnDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getURL">
+      <wsdl:input message="tns:getURLSoapIn" />
+      <wsdl:output message="tns:getURLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkvalidURL">
+      <wsdl:input message="tns:checkvalidURLSoapIn" />
+      <wsdl:output message="tns:checkvalidURLSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="iFCC_WSHttpGet">
+    <wsdl:operation name="authenApplication">
+      <wsdl:input message="tns:authenApplicationHttpGetIn" />
+      <wsdl:output message="tns:authenApplicationHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAddress">
+      <wsdl:input message="tns:getAddressHttpGetIn" />
+      <wsdl:output message="tns:getAddressHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkLoginStatus">
+      <wsdl:input message="tns:checkLoginStatusHttpGetIn" />
+      <wsdl:output message="tns:checkLoginStatusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendSMS_By_Service">
+      <wsdl:input message="tns:sendSMS_By_ServiceHttpGetIn" />
+      <wsdl:output message="tns:sendSMS_By_ServiceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendMail_By_Service">
+      <wsdl:input message="tns:sendMail_By_ServiceHttpGetIn" />
+      <wsdl:output message="tns:sendMail_By_ServiceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendMail">
+      <wsdl:input message="tns:sendMailHttpGetIn" />
+      <wsdl:output message="tns:sendMailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendLineNotify">
+      <wsdl:input message="tns:sendLineNotifyHttpGetIn" />
+      <wsdl:output message="tns:sendLineNotifyHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAnnouncement">
+      <wsdl:input message="tns:getAnnouncementHttpGetIn" />
+      <wsdl:output message="tns:getAnnouncementHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightStatus">
+      <wsdl:input message="tns:GetFlightStatusHttpGetIn" />
+      <wsdl:output message="tns:GetFlightStatusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightStatusOnDate">
+      <wsdl:input message="tns:GetFlightStatusOnDateHttpGetIn" />
+      <wsdl:output message="tns:GetFlightStatusOnDateHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getURL">
+      <wsdl:input message="tns:getURLHttpGetIn" />
+      <wsdl:output message="tns:getURLHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkvalidURL">
+      <wsdl:input message="tns:checkvalidURLHttpGetIn" />
+      <wsdl:output message="tns:checkvalidURLHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="iFCC_WSHttpPost">
+    <wsdl:operation name="authenApplication">
+      <wsdl:input message="tns:authenApplicationHttpPostIn" />
+      <wsdl:output message="tns:authenApplicationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAddress">
+      <wsdl:input message="tns:getAddressHttpPostIn" />
+      <wsdl:output message="tns:getAddressHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkLoginStatus">
+      <wsdl:input message="tns:checkLoginStatusHttpPostIn" />
+      <wsdl:output message="tns:checkLoginStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendSMS_By_Service">
+      <wsdl:input message="tns:sendSMS_By_ServiceHttpPostIn" />
+      <wsdl:output message="tns:sendSMS_By_ServiceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendMail_By_Service">
+      <wsdl:input message="tns:sendMail_By_ServiceHttpPostIn" />
+      <wsdl:output message="tns:sendMail_By_ServiceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendMail">
+      <wsdl:input message="tns:sendMailHttpPostIn" />
+      <wsdl:output message="tns:sendMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendLineNotify">
+      <wsdl:input message="tns:sendLineNotifyHttpPostIn" />
+      <wsdl:output message="tns:sendLineNotifyHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAnnouncement">
+      <wsdl:input message="tns:getAnnouncementHttpPostIn" />
+      <wsdl:output message="tns:getAnnouncementHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightStatus">
+      <wsdl:input message="tns:GetFlightStatusHttpPostIn" />
+      <wsdl:output message="tns:GetFlightStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightStatusOnDate">
+      <wsdl:input message="tns:GetFlightStatusOnDateHttpPostIn" />
+      <wsdl:output message="tns:GetFlightStatusOnDateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getURL">
+      <wsdl:input message="tns:getURLHttpPostIn" />
+      <wsdl:output message="tns:getURLHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkvalidURL">
+      <wsdl:input message="tns:checkvalidURLHttpPostIn" />
+      <wsdl:output message="tns:checkvalidURLHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="iFCC_WSSoap" type="tns:iFCC_WSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="authenApplication">
+      <soap:operation soapAction="http://tempuri.org/authenApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAddress">
+      <soap:operation soapAction="http://tempuri.org/getAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkLoginStatus">
+      <soap:operation soapAction="http://tempuri.org/checkLoginStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSMS_By_Service">
+      <soap:operation soapAction="http://tempuri.org/sendSMS_By_Service" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendMail_By_Service">
+      <soap:operation soapAction="http://tempuri.org/sendMail_By_Service" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendMail">
+      <soap:operation soapAction="http://tempuri.org/sendMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendLineNotify">
+      <soap:operation soapAction="http://tempuri.org/sendLineNotify" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnnouncement">
+      <soap:operation soapAction="http://tempuri.org/getAnnouncement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightStatus">
+      <soap:operation soapAction="http://tempuri.org/GetFlightStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightStatusOnDate">
+      <soap:operation soapAction="http://tempuri.org/GetFlightStatusOnDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getURL">
+      <soap:operation soapAction="http://tempuri.org/getURL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkvalidURL">
+      <soap:operation soapAction="http://tempuri.org/checkvalidURL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="iFCC_WSSoap12" type="tns:iFCC_WSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="authenApplication">
+      <soap12:operation soapAction="http://tempuri.org/authenApplication" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAddress">
+      <soap12:operation soapAction="http://tempuri.org/getAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkLoginStatus">
+      <soap12:operation soapAction="http://tempuri.org/checkLoginStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSMS_By_Service">
+      <soap12:operation soapAction="http://tempuri.org/sendSMS_By_Service" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendMail_By_Service">
+      <soap12:operation soapAction="http://tempuri.org/sendMail_By_Service" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendMail">
+      <soap12:operation soapAction="http://tempuri.org/sendMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendLineNotify">
+      <soap12:operation soapAction="http://tempuri.org/sendLineNotify" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnnouncement">
+      <soap12:operation soapAction="http://tempuri.org/getAnnouncement" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightStatus">
+      <soap12:operation soapAction="http://tempuri.org/GetFlightStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightStatusOnDate">
+      <soap12:operation soapAction="http://tempuri.org/GetFlightStatusOnDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getURL">
+      <soap12:operation soapAction="http://tempuri.org/getURL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkvalidURL">
+      <soap12:operation soapAction="http://tempuri.org/checkvalidURL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="iFCC_WSHttpGet" type="tns:iFCC_WSHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="authenApplication">
+      <http:operation location="/authenApplication" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAddress">
+      <http:operation location="/getAddress" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkLoginStatus">
+      <http:operation location="/checkLoginStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSMS_By_Service">
+      <http:operation location="/sendSMS_By_Service" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendMail_By_Service">
+      <http:operation location="/sendMail_By_Service" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendMail">
+      <http:operation location="/sendMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendLineNotify">
+      <http:operation location="/sendLineNotify" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnnouncement">
+      <http:operation location="/getAnnouncement" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightStatus">
+      <http:operation location="/GetFlightStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightStatusOnDate">
+      <http:operation location="/GetFlightStatusOnDate" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getURL">
+      <http:operation location="/getURL" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkvalidURL">
+      <http:operation location="/checkvalidURL" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="iFCC_WSHttpPost" type="tns:iFCC_WSHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="authenApplication">
+      <http:operation location="/authenApplication" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAddress">
+      <http:operation location="/getAddress" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkLoginStatus">
+      <http:operation location="/checkLoginStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSMS_By_Service">
+      <http:operation location="/sendSMS_By_Service" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendMail_By_Service">
+      <http:operation location="/sendMail_By_Service" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendMail">
+      <http:operation location="/sendMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendLineNotify">
+      <http:operation location="/sendLineNotify" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnnouncement">
+      <http:operation location="/getAnnouncement" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightStatus">
+      <http:operation location="/GetFlightStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightStatusOnDate">
+      <http:operation location="/GetFlightStatusOnDate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getURL">
+      <http:operation location="/getURL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkvalidURL">
+      <http:operation location="/checkvalidURL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="iFCC_WS">
+    <wsdl:port name="iFCC_WSSoap" binding="tns:iFCC_WSSoap">
+      <soap:address location="http://fcc_webservice.fcc.co.th/ws-ifccws/ifcc.asmx" />
+    </wsdl:port>
+    <wsdl:port name="iFCC_WSSoap12" binding="tns:iFCC_WSSoap12">
+      <soap12:address location="http://fcc_webservice.fcc.co.th/ws-ifccws/ifcc.asmx" />
+    </wsdl:port>
+    <wsdl:port name="iFCC_WSHttpGet" binding="tns:iFCC_WSHttpGet">
+      <http:address location="http://fcc_webservice.fcc.co.th/ws-ifccws/ifcc.asmx" />
+    </wsdl:port>
+    <wsdl:port name="iFCC_WSHttpPost" binding="tns:iFCC_WSHttpPost">
+      <http:address location="http://fcc_webservice.fcc.co.th/ws-ifccws/ifcc.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "Call Back Report";
+    ViewBag.Controller = "StudentController";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //ViewBag.activeMain = "Master";
+    //ViewBag.active = "Student";
+
+}
+@section javascripts{
+    <script src="@Url.Content("~/Assets/js/controllers/studentController.js?v=")"></script>
+
+}
+<section id="main-content" vertilize-container>
+    <section class="wrapper">
+        <h3><i class="fa fa-cogs"></i>Call Back Report</h3>
+        <div class="row mt">
+            <div class="col-lg-12 no-padding no-margin">
+                <div class="form-panel no-margin-t">
+                    <form class="form-horizontal tasi-form">
+                        <div class="form-group no-margin">
+                            <div class="col-sm-6">
+                            </div>
+                            <div></div>
+
+                            <div class="col-xs-12">
+
+                                <div class="col-md-6">
+                                    <label class="col-sm-3 control-label required-label">Date Rage</label>
+                                    <div class="col-sm-9">
+                                        <div id="request_date_range" class="form-control">
+                                            <i class="fa fa-calendar"></i> &nbsp;
+                                            <span> </span>
+                                            <b class="fa fa-angle-down pull-right"></b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="col-sm-3 control-label">Project Name</label>
+                                    <div class="col-sm-9">
+
+                                        <select class="form-control select2" name="repeatSelect"
+                                                ng-model="dataFilter.projectName"                                     
+                                                >
+                                            <option value="%" >All</option>
+                                            <option ng-repeat="option in dataMaster" value="{{option.CDN}}"
+                                                    ng-selected="{{ option.CDN == dataFilter.CDN }}">
+                                                {{option.Project_Name}}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <div class="col-xs-12">
+
+                                <div class="right  text-right">
+
+
+                                    <button type="button" name="Search_data" class="btn btn-theme-gray btn-90 CheckDate" ng-click="baseButtonClick('Search')"><i class="fa fa-search"></i>&nbsp;&nbsp;Search Data</button>
+
+                                    <button type="button" name="btn_Export" class="btn btn-theme-blue btn-90 CheckDate" ng-click="ExportAllExcel()"><i class="fa fa-download"></i>&nbsp;&nbsp;Export</button>
+
+                                    <button type="button" name="btn_Export" class="btn btn-theme-green btn-90 CheckDate" ng-click="UpdateData()"><i class="fa fa-check"></i>&nbsp;&nbsp;Update Call Status</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 no-padding no-margin">
+                <div class="form-panel no-margin-t" vertilize>
+                    <br />
+                    <div class="table table-striped table-condensed" style="overflow:auto;">
+                        <h4> Call Back Report </h4>
+                        <br />
+                        
+                        <div class="table table-striped table-condensed" style="overflow:auto;">
+                            <div class="col-md-2 text-left">
+                                <p><span class="topic"></span></p>
+                            </div>
+
+                            <table id="table_list" class="table table-bordered table-striped table-condensed" style="width:100%;">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center"><input type="checkbox" id="chkRequestAll"></th>
+                                        <th class="text-center">ID</th>
+                                        <th class="text-center">Project Name</th>
+                                        <th class="text-center">CDN</th>
+                                        <th class="text-center">Telephone Number</th>
+                                        <th class="text-center">CallBack Date</th>
+                                        <th class="text-center">CallBack Time</th>
+                                        <th class="text-center">CallBack Type</th>
+                                        <th class="text-center">CallBack Status</th>
+                                    </tr>
+                                </thead>
+
+                            </table>
+
+                        </div>
+                        <br />
+
+                        <br />
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        @*Log Create & Update*@
+       
+    </section>
+</section>
+

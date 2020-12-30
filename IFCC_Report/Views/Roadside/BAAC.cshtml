@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "BAAC Report";
+    ViewBag.Controller = "RoadsideController";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //ViewBag.activeMain = "Master";
+    //ViewBag.active = "Student";
+
+}
+@section javascripts{
+    <script src="@Url.Content("~/Assets/js/controllers/Roseside/BAAC.js?v=")"></script>
+
+}
+<section id="main-content" vertilize-container>
+    <section class="wrapper">
+        <h3><i class="fa fa-cogs"></i>Detail OB BAAC Report </h3>
+        <div class="row mt">
+            <div class="col-lg-12 no-padding no-margin">
+                <div class="form-panel no-margin-t">
+                    <form class="form-horizontal tasi-form">
+                        <div class="form-group no-margin">
+                            <div class="col-sm-6">
+                            </div>
+                            <div></div>
+
+                            <div class="col-xs-12">
+
+                                <div class="col-md-6">
+                                    <label class="col-sm-3 control-label required-label">Date Rage</label>
+                                    <div class="col-sm-9">
+                                        <div id="request_date_range" class="form-control">
+                                            <i class="fa fa-calendar"></i> &nbsp;
+                                            <span> </span>
+                                            <b class="fa fa-angle-down pull-right"></b>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <div class="col-xs-12">
+
+                                <div class="right  text-right">
+
+
+                                    <button type="button" name="Search_data" class="btn btn-theme-gray btn-90 CheckDate" ng-click="baseButtonClick('Search')"><i class="fa fa-search"></i>&nbsp;&nbsp;Search Data</button>
+
+                                    <button type="button" name="btn_Export" class="btn btn-theme-blue btn-90 CheckDate" ng-click="ExportAllExcel()"><i class="fa fa-download"></i>&nbsp;&nbsp;Export</button>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 no-padding no-margin">
+                <div class="form-panel no-margin-t" vertilize>
+                    <br />
+                    <div class="table table-striped table-condensed" style="overflow:auto;">
+                        <h4> Detail OB BAAC Report </h4>
+                        <br />
+
+                        <div class="table table-striped table-condensed" style="overflow:auto;">
+                            <div class="col-md-2 text-left">
+                                <p><span class="topic"></span></p>
+                            </div>
+
+                            <table id="table_list" class="table table-bordered table-striped table-condensed" style="width:100%;">
+                                <thead>
+
+                                    <tr>
+                                        <th class="text-center" style="width:auto">วันเดิอนปี</th>
+                                        <th class="text-center" style="width:auto">ชื่อ - สกุล ลูกค้า </th>
+                                        <th class="text-center" style="width:auto">Customer ID</th>
+                                        <th class="text-center" style="width:auto">Bank Level</th>
+                                        <th class="text-center" style="width:auto">ทะเบียนรถ</th>
+                                        <th class="text-center" style="width:auto">ยี่ห้อรถ</th>
+                                        <th class="text-center" style="width:auto">อายุรถ</th>
+                                        @*<th class="text-center" style="width:auto">ที่อยู่</th>*@
+                                        <th class="text-center" style="width:auto">Case ID</th>
+                                        <th class="text-center" style="width:auto">Scope Name</th>
+                                        <th class="text-center" style="width:auto">Service name</th>
+                                        <th class="text-center" style="width:auto">ผู้ให้บริการ</th>
+                                        <th class="text-center" style="width:auto">ค่าบริการ</th>
+                                        <th class="text-center" style="width:auto">agenname</th>
+                                        <th class="text-center" style="width:auto">หมายเหตุ</th>
+
+                                    </tr>
+                                </thead>
+
+                            </table>
+
+                        </div>
+                        <br />
+
+                        <br />
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        @*Log Create & Update*@
+
+    </section>
+</section>
+

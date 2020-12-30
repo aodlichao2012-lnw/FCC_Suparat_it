@@ -1,0 +1,153 @@
+﻿@using System.Data;
+@{ 
+/**/
+ViewBag.Version = @System.Configuration.ConfigurationManager.AppSettings["sourceVersion"];
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Login</title>
+    <link rel="icon" href="@Url.Content("~/Assets/img/favicon.ico?v=" + @ViewBag.Version)">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/bootstrap.css?v=" + ViewBag.Version)" />
+    <!--external css-->
+    @*<link rel="stylesheet" href="@Url.Content("~/Assets/font-awesome/css/font-awesome.css?v=" + ViewBag.Version)" />*@
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/style.css?v=" + ViewBag.Version)" />
+
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/style-responsive.css?v=" + ViewBag.Version)" />
+
+    <link rel="stylesheet" href="@Url.Content("~/Assets/plugins/select2/css/select2.css?v=" + ViewBag.Version)" />
+    <style>
+
+        #background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /*background-image: url('../images/bg-business2.png');*/
+            /*background-image: repeating-linear-gradient(rgb(197, 248, 255) 0%, rgb(0, 195, 226) 50%, rgb(0, 162, 197) 51%, rgb(123, 235, 255) 100%);*/
+            /*background-image:radial-gradient(circle farthest-side at 395px 483px, rgb(0, 61, 126) 0%, rgb(5, 84, 255) 74.2%, rgb(1, 92, 204) 83.3%);*/
+            background-image: -ms-radial-gradient(left top, circle farthest-corner, #FFFFFF 0%, #00A3EF 100%);
+            /* Mozilla Firefox */
+            background-image: -moz-radial-gradient(left top, circle farthest-corner, #FFFFFF 0%, #00A3EF 100%);
+            /* Opera */
+            background-image: -o-radial-gradient(left top, circle farthest-corner, #FFFFFF 0%, #00A3EF 100%);
+            /* Webkit (Safari/Chrome 10) */
+            background-image: -webkit-gradient(radial, left top, 0, left top, 1012, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));
+            /* Webkit (Chrome 11+) */
+            background-image: -webkit-radial-gradient(left top, circle farthest-corner, #FFFFFF 0%, #00A3EF 100%),url("../Assets/img/FCC4.jpg");
+            /* W3C Markup, IE10 Release Preview */
+            background-image: url("./Assets/img/FCC4.jpg"), radial-gradient(circle farthest-corner at left top, #FFFFFF 0%, #00A3EF 100%);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            background-position: center;
+            /*background-size: auto auto;*/
+            z-index: -1000;
+            /*opacity: 0.7;*/
+        }
+
+        media (min-width: 1200px) {
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="background"></div>
+    <!-- **********************************************************************************************************************************************************
+    MAIN CONTENT
+    *********************************************************************************************************************************************************** -->
+
+    <div id="login-page">
+        <div class="container">
+            <div>
+                @using (Html.BeginForm("Signin", "Login", FormMethod.Post, new { @class = "form-login", @name = "csrf" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="text-center padding-15">
+                        <img src="~/Assets/img/Data MAnagement.png" alt="Report System" width="120" />
+                    </div>
+                    <h2 class="form-login-heading">Report Management</h2>
+                    @*if (!@ViewBag.IsAuth)
+                    {
+                        <div class="alert alert-danger">
+                            <button class="close" data-close="alert"></button>
+                            <span>
+                                @if (TempData["Message"] != null)
+                                {
+                                    <text>
+                                        @TempData["Message"]
+                                    </text>
+                                }
+                                else if (TempData["InActive"] == null)
+                                {
+                                    <text>
+                                        The username or password is incorrect.
+                                    </text>
+                                }
+                                else
+                                {
+                                    <text>
+                                        Username is inactive. Please contact User Admin
+                                    </text>
+                                }
+
+                            </span>
+                        </div>
+                    }*@
+                    <div class="login-wrap">
+                  
+                        <input type="text" class="form-control" placeholder="Username" autofocus name="username">
+                        <br />
+                        <input type="password" class="form-control" placeholder="Password" name="password" AUTOCOMPLETE="off">
+
+                        <label class="checkbox">
+                            <span class="pull-right">
+                                @*<a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>*@
+                            </span>
+                        </label>
+                        <input type="hidden" name="returnUrl" value="@Request.QueryString["returnUrl"]"  />
+                        <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+                        <br />
+                    </div>
+                }
+            </div>
+            <footer class=" navbar-fixed-bottom">
+
+                <div class="col-xs-12">
+
+                    <p style="font-size:large;font-weight:200">IFCC Report Management</p>
+                    <p style="font-size:large;font-weight:200"> [ Version 1.0.0 ]  @("@") Copyright 2020 By IT Offcer FCC.Co.,Ltd </p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="@Url.Content("~/Assets/plugins/jquery/jquery.min.js?v=" + @ViewBag.version)"></script>
+    <!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+    @*<script src="@Url.Content("~/Assets/plugins/jquery.backstretch.min.js?v=" + @ViewBag.version)"></script>*@
+    <script>
+        currentUrl = "@Request.Url.Scheme://@Request.Url.Authority@Request.ApplicationPath".replace(/\/\s*$/, "");
+        @*$.backstretch("@Url.Content("~/Assets/img/GSM-bg-7.jpg?v=" + @ViewBag.version)", { speed: 500 });*@
+
+    window.localStorage.clear();
+
+    </script>
+
+
+</body>
+</html>
