@@ -195,7 +195,7 @@
             var data = {
                 dataFilter: $scope.dataFilter
             };
-            BaseService.post($scope.uriController, 'GetByDate/b1', data).then(
+            BaseService.post($scope.uriController, 'GetByDate/b2', data).then(
                 function (response) {
                     $scope.dataDetail = response.data.result;
                     $.each($scope.dataDetail, function (index, item) {
@@ -227,7 +227,7 @@
                             "data": "CaseID", "class": "text-center"
                         },
                         {
-                            "data": "SaveDataTime", "class": "text-center"
+                            "data": "Datetimes", "class": "text-center"
                         },
                         {
                             "data": "PIN", "class": "text-center"
@@ -248,10 +248,10 @@
                             "data": "ServiceType_Name", "class": "text-center"
                         },
                         {
-                            "data": "ServiceRequest", "class": "text-center"
+                            "data": "Details", "class": "text-center"
                         },
                         {
-                            "data": "Solution", "class": "text-center"
+                            "data": "Agent_ID", "class": "text-center"
                         },
                         //{
                         //    "data": "Agent_ID", "class": "text-center"

@@ -236,6 +236,7 @@
     <Content Include="Assets\js\bootstrap-inputmask\bootstrap-inputmask.min.js" />
     <Content Include="Assets\js\chart-master\Chart.js" />
     <Content Include="Assets\js\controllers\Case_Detail_Assistance_Services_Detail_OB_BAACController.js" />
+    <Content Include="Assets\js\controllers\Case_Detail_Assistance_Services_Detail_OB_BAACController2.js" />
     <Content Include="Assets\js\controllers\covid_19_ReportController.js" />
     <Content Include="Assets\js\controllers\kmotorReportController.js" />
     <Content Include="Assets\js\controllers\loginController.js" />
@@ -1965,6 +1966,7 @@
     <Content Include="Template\Vaccine_Report_Templete.xlsx" />
     <Content Include="Template\WineReport_Template.xlsx" />
     <Content Include="Template\~%24CallBack_Template.xlsx" />
+    <Content Include="Views\Case_Detail_Assistance_Services_Detail_OB_BAAC\Out.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

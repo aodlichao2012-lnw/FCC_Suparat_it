@@ -21,6 +21,11 @@ namespace IFCC_Report.Controllers
             return View();
         }
 
+        public ActionResult Out()
+        {
+            return View();
+        }
+
 
         #region GetByDate
         [HttpPost]
@@ -31,17 +36,34 @@ namespace IFCC_Report.Controllers
             {
                 try
                 {
-
-                    DataSet ds = DataHelper.GetRequestData(HttpContext);
-                    DataRow dr = ds.Tables[0].Rows[0];
-                    DataTable dt = CCAReportDAL.Instance.GetCaseDetail(dr["startDate"] + string.Empty, dr["endDate"] + string.Empty);
-                    dt.Columns.Add("Case_ID");
-                    for (int i = 0; i < dt.Rows.Count ; i++)
+                    string a = Url.Action().ToString().ToLower();
+                    if(a  == "/case_detail_assistance_services_detail_ob_baac/getbydate/b1")
                     {
+                        DataSet ds = DataHelper.GetRequestData(HttpContext);
+                        DataRow dr = ds.Tables[0].Rows[0];
+                        DataTable dt = CCAReportDAL.Instance.GetCaseDetail(dr["startDate"] + string.Empty, dr["endDate"] + string.Empty);
+                        dt.Columns.Add("Case_ID");
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
 
-                        dt.Rows[i]["Case_ID"] = i + 1;
+                            dt.Rows[i]["Case_ID"] = i + 1;
+                        }
+                        return DataHelper.GenerateSuccessData(dt);
                     }
-                    return DataHelper.GenerateSuccessData(dt);
+                    if(a == "/case_detail_assistance_services_detail_ob_baac/getbydate/b2")
+                    {
+                        DataSet ds = DataHelper.GetRequestData(HttpContext);
+                        DataRow dr = ds.Tables[0].Rows[0];
+                        DataTable dt = CCAReportDAL.Instance.GetOutboundDetail(dr["startDate"] + string.Empty, dr["endDate"] + string.Empty);
+                        dt.Columns.Add("Case_ID");
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+
+                            dt.Rows[i]["Case_ID"] = i + 1;
+                        }
+                        return DataHelper.GenerateSuccessData(dt);
+                    }
+                   
                 }
                 catch (Exception ex)
                 { }

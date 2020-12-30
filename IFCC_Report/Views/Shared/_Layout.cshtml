@@ -27,11 +27,11 @@
 
     string READ = "0";
 
-    string url = "";
-    if (Request.Url.Segments.Any())
-    {
-        url = "~/" + (Request.Url.Segments.Last().ToLower() == "" || Request.Url.Segments.Last().ToLower() == "addedit" || Request.Url.Segments.Last().ToLower() == "views" ? Request.Url.Segments[Request.Url.Segments.Count() - 2].Replace("/", "") : Request.Url.Segments.Last());
-    }
+    //string url = "";
+    //if (Request.Url.Segments.Any())
+    //{
+    //    url = "~/" + (Request.Url.Segments.Last().ToLower() == "" || Request.Url.Segments.Last().ToLower() == "addedit" || Request.Url.Segments.Last().ToLower() == "views" ? Request.Url.Segments[Request.Url.Segments.Count() - 2].Replace("/", "") : Request.Url.Segments.Last());
+    //}
     ViewBag.Version = @System.Configuration.ConfigurationManager.AppSettings["sourceVersion"];
     string username = string.Empty;
     //string USER_TYPE = string.Empty;
@@ -311,6 +311,13 @@
                                 <li>
                                     <a target="_self" href="~/Case_Detail_Assistance_Services_Detail_OB_BAAC/">
                                         <i class="fas fa-file-alt"></i> Assistance Services & Detail
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a target="_self" href="@Url.Action("Out", "Case_Detail_Assistance_Services_Detail_OB_BAAC")">
+                                        <i class="fas fa-file-alt"></i>  Outbound Detail
                                     </a>
                                 </li>
                             </ul>
