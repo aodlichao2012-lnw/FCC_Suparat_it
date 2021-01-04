@@ -1967,6 +1967,7 @@
     <Content Include="Template\WineReport_Template.xlsx" />
     <Content Include="Template\~%24CallBack_Template.xlsx" />
     <Content Include="Views\Case_Detail_Assistance_Services_Detail_OB_BAAC\Out.cshtml" />
+    <Content Include="Template\Book2.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
